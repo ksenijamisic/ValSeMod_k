@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    const links = [
+        "https://www.soscisurvey.de/valsemod/?q=qnr04", 
+        "https://www.soscisurvey.de/valsemod/?q=qnr05",
+        "https://www.soscisurvey.de/valsemod/?q=qnr06" 
+    ];
+
+    const randomIndex = Math.floor(Math.random() * links.length);
+    window.location.href = links[randomIndex];
+  </script>
+</head>
+<body>
+  <p>Redirecting you to the study...</p>
+</body>
+</html>
