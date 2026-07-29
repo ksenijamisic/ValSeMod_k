@@ -4,14 +4,30 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
+    // Set remaining slots for each survey link:
     const links = [
-        "https://www.soscisurvey.de/valsemod/?q=qnr04", 
-        "https://www.soscisurvey.de/valsemod/?q=qnr05",
-        "https://www.soscisurvey.de/valsemod/?q=qnr06" 
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr04", weight: 22 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr05", weight: 29 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr06", weight: 22 }
     ];
 
-    const randomIndex = Math.floor(Math.random() * links.length);
-    window.location.href = links[randomIndex];
+    // Calculate total weight (73)
+    const totalWeight = links.reduce((sum, item) => sum + item.weight, 0);
+    
+    // Pick a random number between 0 and totalWeight - 1
+    let randomNum = Math.floor(Math.random() * totalWeight);
+    let selectedUrl = links[0].url;
+
+    for (const item of links) {
+      if (randomNum < item.weight) {
+        selectedUrl = item.url;
+        break;
+      }
+      randomNum -= item.weight;
+    }
+
+    // Redirect to chosen link
+    window.location.href = selectedUrl;
   </script>
 </head>
 <body>
