@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    // Set remaining slots for each survey link:
+    const links = [
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr01 ", weight: 29 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr02 ", weight: 30 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr03 ", weight: 30 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr13 ", weight: 25 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr14 ", weight: 22 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr15 ", weight: 25 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr28 ", weight: 30 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr29 ", weight: 30 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr30 ", weight: 30 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr40 ", weight: 19 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr41 ", weight: 25 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr42 ", weight: 29 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr46 ", weight: 30 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr47 ", weight: 30 },
+      { url: "https://www.soscisurvey.de/valsemod/?q=qnr48 ", weight: 30 }
+    ];
+
+    // Calculate total weight (415)
+    const totalWeight = links.reduce((sum, item) => sum + item.weight, 0);
+    
+    // Pick a random number between 0 and totalWeight - 1
+    let randomNum = Math.floor(Math.random() * totalWeight);
+    let selectedUrl = links[0].url;
+
+    for (const item of links) {
+      if (randomNum < item.weight) {
+        selectedUrl = item.url;
+        break;
+      }
+      randomNum -= item.weight;
+    }
+
+    // Redirect to chosen link
+    window.location.href = selectedUrl;
+  </script>
+</head>
+<body>
+  <p>Redirecting you to the study...</p>
+</body>
+</html>
